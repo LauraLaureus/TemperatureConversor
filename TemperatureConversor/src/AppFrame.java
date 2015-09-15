@@ -27,6 +27,11 @@ public class AppFrame extends javax.swing.JFrame {
         });
 
         actionButton.setText("--- Convierte -->");
+        actionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionButtonActionPerformed(evt);
+            }
+        });
 
         inputLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inputLabel.setText("Dato: grados Celsius");
@@ -75,6 +80,13 @@ public class AppFrame extends javax.swing.JFrame {
     private void outputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_outputFieldActionPerformed
+
+    private void actionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionButtonActionPerformed
+
+        Double input = Double.parseDouble(inputField.getText());
+        Double output = input * 1.8d + 32;
+        outputField.setText(output.toString());
+    }//GEN-LAST:event_actionButtonActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
