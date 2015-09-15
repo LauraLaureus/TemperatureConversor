@@ -14,6 +14,7 @@ public class AppFrame extends javax.swing.JFrame {
         actionButton = new javax.swing.JButton();
         inputLabel = new javax.swing.JLabel();
         outputLabel = new javax.swing.JLabel();
+        warning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor de temperatura -TemperatureConversor");
@@ -39,6 +40,11 @@ public class AppFrame extends javax.swing.JFrame {
         outputLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         outputLabel.setText("Resultado: grados Fahrenheit");
 
+        warning.setForeground(new java.awt.Color(255, 0, 0));
+        warning.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        warning.setText("Dato introducido no válido. Inserte únicamente números mayores que -271.1");
+        warning.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -54,8 +60,14 @@ public class AppFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(outputLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(outputField, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(outputField)))
                 .addGap(35, 35, 35))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(warning, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +81,9 @@ public class AppFrame extends javax.swing.JFrame {
                     .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(actionButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warning)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(author)
                 .addContainerGap())
         );
@@ -83,9 +97,18 @@ public class AppFrame extends javax.swing.JFrame {
 
     private void actionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionButtonActionPerformed
 
-        Double input = Double.parseDouble(inputField.getText());
-        Double output = input * 1.8d + 32;
-        outputField.setText(output.toString());
+        try {
+            Double input = Double.parseDouble(inputField.getText());
+            if ( input < -273.1d ) throw new Exception();
+            else warning.setEnabled(false);
+            Double output = input * 1.8d + 32;
+            outputField.setText(output.toString());
+        }catch (Exception e){
+            warning.setEnabled(true);
+            inputField.setText("");
+            outputField.setText("");
+        }
+        
     }//GEN-LAST:event_actionButtonActionPerformed
 
     public static void main(String args[]) {
@@ -124,5 +147,6 @@ public class AppFrame extends javax.swing.JFrame {
     private javax.swing.JLabel inputLabel;
     private javax.swing.JTextField outputField;
     private javax.swing.JLabel outputLabel;
+    private javax.swing.JLabel warning;
     // End of variables declaration//GEN-END:variables
 }
