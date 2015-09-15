@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Conversor de temperatura -TemperatureConversor"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -25,15 +26,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="author" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="351" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="author" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="inputLabel" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="actionButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="outputLabel" max="32767" attributes="0"/>
+                  <Component id="outputField" pref="156" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="275" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="outputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="outputField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
               <Component id="author" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -44,6 +67,30 @@
     <Component class="javax.swing.JLabel" name="author">
       <Properties>
         <Property name="text" type="java.lang.String" value="Autora: Laura del Pino D&#xed;az para DIU"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="outputField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outputFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="actionButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="--- Convierte --&gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="inputLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Dato: grados Celsius"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="outputLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Resultado: grados Fahrenheit"/>
       </Properties>
     </Component>
   </SubComponents>
